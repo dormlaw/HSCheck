@@ -1,3 +1,14 @@
-h1, h2 {
-  font-family: Lato;
+.wrapper {
+  font-family: sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.positive {
+  color: red;
+}
+.negative {
+  color: green;
 }
