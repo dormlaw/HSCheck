@@ -1,14 +1,102 @@
-.wrapper {
+:root {
+  --green: #17aa56;
+  --darkgreen: #119e4d;
+  --contrast: #ffde58;
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  text-transform: uppercase;
+  font-size: 32px;
   font-family: sans-serif;
+  font-weight: 700;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+body {
+  background-color: var(--green);
+}
+
+h1 {
+  color: white;
+}
+
+.wrapper {
+  width: 360px;
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+input {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  
+  border-radius: 5px;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 4px solid white;
+  color: white;
+  background-color: var(--green);
+}
+
+button:hover {
+  background-color: var(--darkgreen);
+  transform: scale(1.01);
+}
+
+button:focus {
+  animation: buttonClick 0.1s;
+}
+
+.answer {
+  height: 40px;
+  margin-top: 20px;
+  text-align: center;
+}
+
 .positive {
-  color: red;
+  color: var(--contrast);
+  font-size: 40px;
 }
 .negative {
   color: green;
+}
+
+@keyframes buttonClick {
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
