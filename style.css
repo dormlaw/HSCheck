@@ -74,7 +74,7 @@ button:hover {
   transform: scale(1.01);
 }
 
-button:focus {
+button:active {
   animation: buttonClick 0.1s;
 }
 
