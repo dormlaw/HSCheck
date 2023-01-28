@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Проверка кодов ТН ВЭД</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- <script src="https://telegram.org/js/telegram-web-app.js"></script> -->
   </head>
   <body>
-    <div class="wrapper">
-      <h1>Введите код ТН ВЭД</h1>
-      <input type="number" name="HScode" id="HScode" />
-      <button onclick="callCheck()">проверить</button>
-      <div class="answer"></div>
+    <div class="app">
+      <div class="wrapper">
+        <h1>Введите код ТН ВЭД</h1>
+        <div class="input-wrapper">
+          <input class="input" type="number" id="input" />
+          <label class="delete" for="input"></label>
+        </div>
+        <button class="button">проверить</button>
+        <div class="answer"></div>
+      </div>
     </div>
 
     <script src="codes_list.js"></script>

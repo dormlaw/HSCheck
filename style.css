@@ -1,7 +1,10 @@
 :root {
-  --green: #17aa56;
-  --darkgreen: #119e4d;
+  --maincolor: #17aa56;
+  --maincolor-darker: #119e4d;
+  --confirmcolor: green;
   --contrast: #ffde58;
+  --abort: rgb(240, 146, 146);
+  --abort-ready: red;
 }
 
 *, *::after, *::before {
@@ -28,20 +31,32 @@ input[type="number"]:focus {
 }
 
 body {
-  background-color: var(--green);
+  background-color: var(--maincolor);
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   color: white;
+  text-align: center;
+}
+
+.app {
+  max-width: 400px;
+}
+
+@media screen and (max-width: 400px) {
+  * {
+    font-size: calc(24px + (32 - 24) * ((100vw - 300px) / (400 - 300)));
+  }
 }
 
 .wrapper {
-  width: 360px;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 0 15px;
 }
 
 input {
@@ -59,22 +74,65 @@ input:focus {
   outline: none;
 }
 
-button {
+.input-wrapper {
+  position: relative;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.delete::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  right: 10px;
+  width: 25px;
+  height: 4px;
+  background-color: var(--abort);
+  transform: rotate(-45deg);
+}
+
+.delete::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  right: 10px;
+  width: 25px;
+  height: 4px;
+  background-color: var(--abort);
+  transform: rotate(45deg);
+}
+
+.delete:hover::before, .delete:hover::after {
+  height: 5px;
+  background-color: var(--abort-ready);
+}
+
+.delete:active::before, .delete:active::after {
+  transition: 0.2s;
+  transform: rotate(180deg);
+  background-color: var(--abort-ready);
+}
+
+.button {
   width: 100%;
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
   border: 4px solid white;
   color: white;
-  background-color: var(--green);
+  background-color: var(--maincolor);
 }
 
-button:hover {
-  background-color: var(--darkgreen);
+.button:hover {
+  background-color: var(--maincolor-darker);
   transform: scale(1.01);
 }
 
-button:active {
+.button:active {
   animation: buttonClick 0.1s;
 }
 
@@ -86,10 +144,10 @@ button:active {
 
 .positive {
   color: var(--contrast);
-  font-size: 40px;
+  font-size: 1.15rem;
 }
 .negative {
-  color: green;
+  color: var(--confirmcolor);
 }
 
 @keyframes buttonClick {
