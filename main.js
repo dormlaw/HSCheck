@@ -48,7 +48,7 @@ function callCheck(type) {
               if (checkResult311) HTMLAnswer.innerHTML = '<p class="positive">Нужен СТ-1</p>';
               if (!checkResult311) HTMLAnswer.innerHTML = '<p class="negative">СТ-1 не требуется</p>';
               if (checkResultDuty) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="positive">есть пошлина</p>');
-              if (!checkResultDuty) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="negative">безпошлинный</p>');
+              if (!checkResultDuty) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="negative">нет пошлины</p>');
               if (checkResultTax) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="positive">сбор 30 000₽</p>');
             }
           }, i * 250);
