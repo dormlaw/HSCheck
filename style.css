@@ -140,12 +140,13 @@ input:focus {
   height: 40px;
   margin-top: 20px;
   text-align: center;
+  font-size: 36px;
 }
 
 .positive {
   color: var(--contrast);
-  font-size: 1.15rem;
 }
+
 .negative {
   color: var(--confirmcolor);
 }
