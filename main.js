@@ -36,6 +36,7 @@ function callCheck(type) {
     case 'check':
       if (codeOnCheck !== '' && codeOnCheck.length > 3) {
         let checkResult311 = checkCode(codeOnCheck, CODES.restricted311, CODES.exception311);
+        let checkResultDuty = checkCode(codeOnCheck, CODES.underDuty, CODES.exceptionDuty);
         let checkResultTax = checkCode(codeOnCheck, CODES.tax30, []);
         
         let loader = '';
@@ -45,8 +46,10 @@ function callCheck(type) {
             HTMLAnswer.innerHTML = `<p class="positive">${loader}</p>`;
             if (i === 3) {
               if (checkResult311) HTMLAnswer.innerHTML = '<p class="positive">Нужен СТ-1</p>';
-              if (!checkResult311) HTMLAnswer.innerHTML = '<p class="negative">Можно отправлять</p>';
-              if (checkResultTax) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="positive">сбор 30тыс.р.</p>');
+              if (!checkResult311) HTMLAnswer.innerHTML = '<p class="negative">СТ-1 не требуется</p>';
+              if (checkResultDuty) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="positive">есть пошлина</p>');
+              if (!checkResultDuty) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="negative">безпошлинный</p>');
+              if (checkResultTax) HTMLAnswer.insertAdjacentHTML("beforeend", '<p class="positive">сбор 30 000₽</p>');
             }
           }, i * 250);
         }
